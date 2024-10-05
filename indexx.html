@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me perdonas?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #noBtn {
+            position: relative;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Contenedor del corazón */
+        .heart-container {
+            position: relative;
+            width: 200px;  /* Ajusta el tamaño del contenedor */
+            height: 200px;
+            margin: 0 auto;
+            margin-top: 20px;
+            display: none; /* Oculto inicialmente */
+            transition: transform 1s ease, opacity 1s ease;
+        }
+
+        /* Forma de corazón con imagen */
+        .heart {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.pinimg.com/originals/6d/bc/ba/6dbcba97fb3ed14791b2ed59cecdcf6a.jpg'); /* Imagen dentro del corazón */
+            background-size: cover;
+            background-position: center;
+            clip-path: path("M 100 180 A 40 40 0 1 1 0 100 Q 0 0 100 40 Q 200 0 200 100 A 40 40 0 1 1 100 180 Z"); /* Forma de corazón */
+        }
+
+        /* Animación para mostrar el corazón */
+        .heart-container.show {
+            display: block;
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Me perdonas?</h1>
+    <button id="yesBtn">Sí</button>
+    <button id="noBtn">No</button>
+
+    <div id="message"></div>
+
+    <!-- Contenedor del corazón -->
+    <div class="heart-container" id="heartContainer">
+        <div class="heart"></div> <!-- Imagen dentro de la forma de corazón -->
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const message = document.getElementById('message');
+        const heartContainer = document.getElementById('heartContainer');
+
+        noBtn.addEventListener('mouseover', function() {
+            const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        yesBtn.addEventListener('click', function() {
+            message.textContent = "Vamos a motelear! <3";
+            heartContainer.classList.add('show');
+        });
+    </script>
+</body>
+</html>
+
